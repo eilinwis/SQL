@@ -28,6 +28,7 @@ target/
 build/
 data/
 c/
+.gradle/
 
 ### VS Code ###
 .vscode/
