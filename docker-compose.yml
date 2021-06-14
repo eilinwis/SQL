@@ -3,9 +3,9 @@ services:
   mysql:
     image: mysql:8.0
     ports:
-      - '3307:3307'
+      - '3306:3306'
     volumes:
-      - ./c/Users/admin/projects/html:/usr/share/nginx/html/
+      - ./schema/:/docker-entrypoint-initdb.d/
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE=app
