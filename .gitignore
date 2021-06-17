@@ -30,7 +30,7 @@ build/
 /nbdist/
 /.nb-gradle/
 build/
-data/
+
 c/
 .gradle
 
