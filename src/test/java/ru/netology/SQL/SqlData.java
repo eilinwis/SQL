@@ -1,5 +1,6 @@
 package ru.netology.SQL;
 
+import lombok.SneakyThrows;
 import lombok.val;
 import ru.netology.data.DataHelper;
 
@@ -15,8 +16,8 @@ public class SqlData {
                 "jdbc:mysql://localhost:3306/app", "app", "pass"
         );
     }
-
-    public static void createUser(DataHelper.UserData user) throws SQLException {
+    @SneakyThrows
+    public static void createUser(DataHelper.UserData user) {
 
         val dataSQL = "INSERT INTO users(id, login, password) VALUES (?, ?, ?);";
 
@@ -30,8 +31,8 @@ public class SqlData {
             dataStmt.executeUpdate();
         }
     }
-
-    public static void cleanDefaultData() throws SQLException {
+    @SneakyThrows
+    public static void cleanDefaultData()  {
         val deleteCards = "DELETE FROM cards WHERE number = '5559 0000 0000 0002' OR number = '5559 0000 0000 0001';";
         val deleteUsers = "DELETE FROM users WHERE login = 'petya' OR login = 'vasya';";
         try (
@@ -42,8 +43,8 @@ public class SqlData {
             dataStmt.executeUpdate(deleteUsers);
         }
     }
-
-    public static String getVerificationCode(String id) throws SQLException, InterruptedException {
+    @SneakyThrows
+    public static String getVerificationCode(String id) {
         val selectCode = "SELECT code FROM auth_codes WHERE user_id = '" + id + "';";
         Thread.sleep(500);
 
@@ -59,8 +60,8 @@ public class SqlData {
         }
         return "Error";
     }
-
-    public static String getUserStatus(String id) throws SQLException, InterruptedException {
+    @SneakyThrows
+    public static String getUserStatus(String id) {
         val selectCode = "SELECT status FROM users WHERE id = '" + id + "';";
         Thread.sleep(500);
 

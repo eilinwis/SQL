@@ -9,6 +9,8 @@ import ru.netology.data.DataHelper;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
+    DataHelper.UserData user = new DataHelper().getUserFirst();
+
 
     private SelenideElement loginField = $("[data-test-id=login] input");
     private SelenideElement passwordField = $("[data-test-id=password] input");
@@ -23,15 +25,17 @@ public class LoginPage {
         return new VerificationPage();
     }
 
-    public void invalidLogin(String login) {
+    public LoginPage invalidLogin(String login) {
         loginField.setValue(login);
         passwordField.setValue(login);
         loginButton.click();
         errorNotification.shouldBe(Condition.visible);
+        return new LoginPage();
     }
-    public void reEnterInvalidLogin(){
+    public LoginPage clearFields(){
         closeButton.click();
         loginField.doubleClick().sendKeys(Keys.DELETE);
         passwordField.doubleClick().sendKeys(Keys.DELETE);
+        return new LoginPage();
     }
 }
