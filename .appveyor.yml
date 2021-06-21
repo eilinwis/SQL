@@ -8,6 +8,9 @@ branches:
 
 build: off
 
+services:
+  - mysql
+
 environment:
   MYSQL_DATABASE: app
   MYSQL_HOST: localhost
@@ -15,15 +18,8 @@ environment:
   MYSQL_PASSWORD: pass
   MYSQL_PORT: 3306
 
-services:
-  - mysql
-
 install:
   - java -jar ./artifacts/app-deadline.jar &
-
-before_test:
-  - node tool/wait-mysql.js %MYSQL_PORT% %MYSQL_HOST%
-  - mysqladmin --host=%MYSQL_HOST% --user=%MYSQL_USER% --password=%MYSQL_PASSWORD% create %MYSQL_DATABASE%
 
 build_script:
   - chmod +x gradlew
