@@ -12,6 +12,7 @@ services:
   - mysql
 
 environment:
+  MYSQL_RANDOM_ROOT_PASSWORD: yes
   MYSQL_DATABASE: app
   MYSQL_HOST: localhost
   MYSQL_USER: app
