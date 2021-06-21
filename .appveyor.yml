@@ -12,7 +12,7 @@ environment:
   MYSQL_DATABASE: app
   MYSQL_USER: app
   MYSQL_PASSWORD: pass
-   MYSQL_PORT: 3306
+  MYSQL_PORT: 3306
 
 services:
   - mysql
